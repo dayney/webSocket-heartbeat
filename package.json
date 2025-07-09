@@ -10,8 +10,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "frontend": "vite",
-    "backend": "ts-node-esm demo/server/wsServer.ts",
-    "postinstall": "node node_modules/@cus-developer/config/scripts/setup.cjs"
+    "backend": "ts-node-esm demo/server/wsServer.ts"
   },
   "dependencies": {
     "vue": "^3.4.0",
