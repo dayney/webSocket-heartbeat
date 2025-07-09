@@ -87,12 +87,4 @@ export default class AudioManager {
       }, 100);
     });
   }
-
-  /**
-   * 安全发送数据到 WebSocket
-   * @param data 字符串数据
-   */
-  public safeSend(data: string) {
-    this.wsManager.send(data);
-  }
 }

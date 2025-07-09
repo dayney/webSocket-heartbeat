@@ -2,8 +2,6 @@
   <div style="text-align: center; margin-top: 50px;">
     <div style="margin-bottom: 20px;">
       <button v-if="showReconnectBtn" @click="manualReconnect">请手动重连</button>
-      <!-- <button @click="simulateFault">模拟故障</button>
-      <button @click="recoverFault">恢复正常</button> -->
     </div>
     <h1>🎙️ Cus Audio Upload Demo</h1>
     <div>
@@ -26,9 +24,7 @@ const reconnectAttempt = ref(0);
 const showReconnectBtn = ref(false);
 const wsUrl = '/ws'; // 使用 Vite Proxy
 let audioManager: AudioManager | null = null;
-let controlWs: WebSocket | null = null;
-let lastCloseReason = '';
-// 删除 heartbeatReconnectAttempt
+// 删除 lastCloseReason
 
 function setupAudioManager() {
   if (!audioManager) {
@@ -83,35 +79,11 @@ function setupAudioManager() {
   }
 }
 
-// 控制通道，专门用于发送模拟故障/恢复正常指令
-function sendControlMsg(msg: object) {
-  if (!controlWs || controlWs.readyState !== 1) {
-    controlWs = new WebSocket(wsUrl + '?control=1');
-    controlWs.onopen = () => controlWs!.send(JSON.stringify(msg));
-  } else {
-    controlWs.send(JSON.stringify(msg));
-  }
-}
-
-function simulateFault() {
-  console.log('心跳已发送模拟故障指令');
-  sendControlMsg({ simulateFault: true });
-}
-function recoverFault() {
-  console.log('心跳已发送恢复正常指令');
-  sendControlMsg({ recoverFault: true });
-}
-
-const start = (manual = false) => {
+const start = () => {
   setupAudioManager();
   if (audioManager) {
-    // 重置重连原因
-    lastCloseReason = '';
     audioManager.init();
     audioManager.startRecording();
-    if (manual) {
-      audioManager.safeSend(JSON.stringify({ data: { manualReconnect: true } }));
-    }
   }
 };
 
@@ -132,7 +104,7 @@ const stop = () => {
 
 function manualReconnect() {
   showReconnectBtn.value = false;
-  start(true);
+  start();
 }
 
 onMounted(() => {
