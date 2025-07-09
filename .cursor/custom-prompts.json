@@ -1,0 +1,68 @@
+{
+  "prompts": [
+    {
+      "id": "vue-component",
+      "title": "创建Vue组件",
+      "template": "请帮我创建一个名为{{name}}的Vue组件，主要功能是{{purpose}}。\n\n请确保：\n1. 使用英文状态值，界面显示用中文字段\n2. 添加详细注释\n3. 复杂判断使用对象映射\n4. CSS类名与状态值保持一致性",
+      "placeholders": [
+        {
+          "name": "name",
+          "description": "组件名称"
+        },
+        {
+          "name": "purpose",
+          "description": "组件功能描述"
+        }
+      ]
+    },
+    {
+      "id": "object-mapping",
+      "title": "条件判断优化",
+      "template": "请帮我优化以下代码中的条件判断，将多个if/else或switch语句改为对象映射方式：\n\n```\n{{code}}\n```",
+      "placeholders": [
+        {
+          "name": "code",
+          "description": "需要优化的代码"
+        }
+      ]
+    },
+    {
+      "id": "state-english",
+      "title": "状态值英文化",
+      "template": "请帮我将以下代码中的中文状态值改为英文，并添加中文显示字段：\n\n```\n{{code}}\n```",
+      "placeholders": [
+        {
+          "name": "code",
+          "description": "需要优化的代码"
+        }
+      ]
+    },
+    {
+      "id": "api-service",
+      "title": "创建API服务",
+      "template": "请为{{entity}}创建一个API服务模块，包括基本的CRUD操作。请确保使用标准的请求错误处理和状态码映射。",
+      "placeholders": [
+        {
+          "name": "entity",
+          "description": "实体名称，如'用户'、'健康记录'等"
+        }
+      ]
+    },
+    {
+      "id": "docs-generate",
+      "title": "生成JSDoc注释",
+      "template": "请为以下代码生成完整的JSDoc格式注释：\n\n```\n{{code}}\n```",
+      "placeholders": [
+        {
+          "name": "code",
+          "description": "需要添加注释的代码"
+        }
+      ]
+    },
+    {
+      "id": "scss-rules",
+      "title": "SCSS/SASS编码规范",
+      "template": "请按照以下SCSS/SASS编码规范编写或修改CSS代码：\n\n## 1. 基本要求\n- 所有Vue组件必须使用 `<style lang=\"scss\" scoped>` 而非普通CSS\n- 样式应当遵循BEM命名规范或组件化命名方式\n- 组件样式文件必须导入全局变量: `@import '@/assets/sass/_variables.scss';`\n\n## 2. 变量使用规范\n- 所有颜色值必须定义为变量，禁止硬编码颜色\n- 重复使用的间距、尺寸必须定义为变量\n- 变量命名必须语义化，如`$primary-color`而非`$blue`\n\n## 3. 嵌套规则\n- 嵌套不超过3层，避免过度特异性\n- 伪类和伪元素应当使用`&`符号嵌套\n- 媒体查询应在选择器内部嵌套\n\n## 4. 功能使用\n- 使用SASS内置函数处理颜色，如`darken()`, `lighten()`\n- 使用mixins处理重复样式\n- 谨慎使用`@extend`，优先考虑mixins\n\n## 5. 组件样式\n- 样式名称应与组件名保持一致\n- 状态类命名应有意义: `.is-active`, `.is-disabled`\n\n要查看完整规范，请参考项目中的SCSS_Coding_Standards.md文件。"
+    }
+  ]
+}

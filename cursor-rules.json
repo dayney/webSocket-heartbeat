@@ -1,0 +1,7 @@
+{
+  "fileNaming": {
+    "normalFiles": "camelCase",
+    "componentFiles": "PascalCase",
+    "description": "普通文件用小驼峰命名法，组件文件使用大驼峰命名法"
+  }
+}
